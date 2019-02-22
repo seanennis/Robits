@@ -61,18 +61,36 @@ void analyzeRoom()
 
 }
 
+void rescueRoom() {
+	drawBmpfile(0, 127, "Evil");
+}
+
+void wallRoom() {
+	drawBmpfile(0, 127, "US sensor");
+}
+
 task main()
 {
-repeatUntil(SensorValue(Color) == 5 || SensorValue(Touch) == 1){
-		setMotorSpeed(motorLeft, 50);
-		setMotorSpeed(motorRight, 50);
-}
-if(SensorValue(Color) == 5){
-	setMotorSpeed(motorLeft, 0);
-		setMotorSpeed(motorRight, 0);
-fireRoom();
-}
-else{
-analyzeRoom();
-}
+	if(SensorValue(Sonar) > 65) {
+		repeatUntil(SensorValue(Color) == 5 || SensorValue(Touch) == 1){
+			setMotorSpeed(motorLeft, 50);
+			setMotorSpeed(motorRight, 50);
+		}
+		if(SensorValue(Color) == 5){
+			setMotorSpeed(motorLeft, 0);
+			setMotorSpeed(motorRight, 0);
+			fireRoom();
+		}
+		else{
+			analyzeRoom();
+		}
+	}
+	else {
+		if(SensorValue(Sonar) < 40) {
+			rescueRoom();
+		}
+		else {
+			wallRoom();
+		}
+	}
 }
