@@ -5,6 +5,7 @@
 #pragma config(Sensor, S2, Gyro,     sensorEV3_Gyro)//sets up the gyro
 #pragma config(sensor, S3, Color, sensorEV3_Color, modeEV3Color_Color)//sets up the light sensor to pickup colour
 #pragma config(Sensor, S4,     Sonar,    sensorEV3_IRSensor, modeEV3IR_Proximity)//sets up the sonar to sense depth
+#include "Robot.h"
 
 task main()
 {
