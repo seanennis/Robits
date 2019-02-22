@@ -6,7 +6,7 @@
 #pragma config(sensor, S3, Color, sensorEV3_Color, modeEV3Color_Color)//sets up the light sensor to pickup colour
 #pragma config(Sensor, S4,     Sonar,    sensorEV3_IRSensor, modeEV3IR_Proximity)//sets up the sonar to sense depth
 
-void rescueRoom() {
+task main() {
 	drawBmpfile(0, 127, "Evil");
 
 	while(sensorValue(Sonar) >= 7) {
