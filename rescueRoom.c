@@ -9,7 +9,7 @@
 void rescueRoom() {
 	drawBmpfile(0, 127, "Evil");
 
-	while(sensorValue(Sonar) > 8) {
+	while(SensorValue(Sonar) > 8) {
 		setMotorSpeed(motorRight, 30);
 		setMotorSpeed(motorLeft, 30);
 	}
