@@ -7,5 +7,44 @@
 #pragma config(Sensor, S4,     Sonar,    sensorEV3_IRSensor, modeEV3IR_Proximity)//sets up the sonar to sense depth
 
 void wallRoom() {
-	drawBmpfile(0, 127, "US sensor");
+	//drawBmpfile(0, 127, "US sensor");
+	
+	while (SensorValue(S4) > 10){
+		motor[motorA] = 70;
+		motor[motorB] = 70;
+	}
+	motor[motorA] = -100;
+	motor[motorB] = -100;
+	wait1Msec(200);
+
+
+  motor[motorA] = 100;
+	motor[motorB] = -100;
+	wait1Msec(300);
+
+    while (SensorValue(S4) > 10){
+      motor[motorA] = 70;
+  		motor[motorB] = 70;
+    }
+motor[motorA] = -100;
+	motor[motorB] = -100;
+	wait1Msec(200);
+    motor[motorA] = -100;
+  	motor[motorB] = 100;
+  	wait1Msec(250);
+
+    while (SensorValue(S4) > 15){
+      motor[motorA] = 70;
+  		motor[motorB] = 70;
+    }
+motor[motorA] = -100;
+	motor[motorB] = -100;
+	wait1Msec(300);
+    motor[motorA] = 100;
+  	motor[motorB] = -100;
+  	wait1Msec(230);
+
+    motor[motorA] = 100;
+  	motor[motorB] = 100;
+  	wait1Msec(300);
 }
