@@ -9,15 +9,15 @@
 task main() {
 	drawBmpfile(0, 127, "Evil");
 
-	while(sensorValue(Sonar) >= 7) {
+	while(sensorValue(Sonar) > 8) {
 		setMotorSpeed(motorRight, 30);
 		setMotorSpeed(motorLeft, 30);
 	}
-	setMotorSpeed(motorArm, 5);
-	wait1Msec(1000);
+	setMotorSpeed(motorArm, -5);
+	wait1Msec(1500);
 	setMotorSpeed(motorRight, 30);
 	setMotorSpeed(motorLeft, 30);
-	wait1Msec(500);
-	setMotorSpeed(motorArm, -5);
-	wait1Msec(1000);
+	wait1Msec(400);
+	setMotorSpeed(motorArm, 5);
+	wait1Msec(1500);
 }
