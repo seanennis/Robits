@@ -38,21 +38,8 @@ public class MergeSort {
         
         System.out.println(list2);
         mergeSort2(list2, C);
-        List<Integer> tempList = new LinkedList<Integer>();
-        tempList = list;
-        Position<Integer> temp;
-        
-        for(int i = 0; i < (list.size()/2); i++) {
-        	if(i == 0) {
-        		temp = list.last();
-        		tempList.insertFirst(temp.element());
-        	}
-        	else {
-        		temp = list.next(temp);
-        		tempList.insertLast(list.remove(temp));
-        	}
-        }
-        list = tempList;
+       
+       
         System.out.println(list2);
     }
 
@@ -110,7 +97,7 @@ public class MergeSort {
      */
     private static <T extends Comparable<T>> void merge(List<T> S, List<T> S1, List<T> S2) {
     	while(!(S1.isEmpty()) && !(S2.isEmpty())) {
-    		if(S1.first().element().compareTo(S2.first().element()) < 0)
+    		if(S1.first().element().compareTo(S2.first().element()) >= 0)
     			S.insertLast(S1.remove(S1.first()));
     		else
     			S.insertLast(S2.remove(S2.first()));
@@ -123,6 +110,7 @@ public class MergeSort {
     	while(!(S2.isEmpty())) {
     		S.insertLast(S2.remove(S2.first()));
     	}
+        return;
     }
     
     private static <T extends Comparator<T>> void merge2(List<T> S, List<T> S1, List<T> S2, Comparator<T> C) {
@@ -140,5 +128,6 @@ public class MergeSort {
     	while(!(S2.isEmpty())) {
     		S.insertLast(S2.remove(S2.first()));
     	}
+        return;
     }
 }
