@@ -19,17 +19,16 @@ public class BoyerMoore {
         
         T = "the cat sat on the back of the big red mat";
         comparisons = 0;
-
+        
         int i = 0;
         while(i <= T.length()){
-            int index = match(T, "the", i);
-
-            if(index >= 0) {
-                System.out.println("index: " + index);
-                i = index + 3;
+            int count = match(T, "the", i);
+            if(count >= 0) {
+                System.out.println("index: " + count);
+                i = count + 3;
             }
             else
-                i = -1 * index + 1;
+                i = (-1*count) + 1;
         }
         System.out.println("comparisons: " + comparisons);
     }
@@ -89,23 +88,25 @@ public class BoyerMoore {
 
         return -i;
     }
-
-    public static Map<Character, Integer> lastOccurrenceMap(String P) {
-    	Map<Character,Integer> map = new TreeMap<Character, Integer>();
-    	for(int i = P.length()-1; i>=0; i--){
-    		char c = P.charAt(i);
-    		if(!map.containsKey(c)){
-    			map.put(c, i);
+    
+	@SuppressWarnings("null")
+	public static Map<Character, Integer> lastOccurrenceMap(String P) {
+    	Map<Character, Integer> m = new TreeMap<>();
+    	int index = -1;
+    	
+    	for(char c = 'a'; c <= 'z'; c++) {
+    		for(int j = 0; j < P.length(); j++) {
+    			if(c == P.charAt(j)) {
+    				index = j;
+    			}
     		}
+    		m.put(c, index);
     	}
     	
-        return map;
+        return m;
     }
 
-    public static int lastOccurrence(Map<Character, Integer> L, Character c){
-    	if(L.containsKey(c)){
-    		return L.get(c);
-    	}
-        return -1;
+    public static int lastOccurrence(Map<Character, Integer> L, Character c) {
+        return L.get(c);
     }
 }
